@@ -13,17 +13,12 @@ const typeDefs = gql`
     _id: ID
     destinationName: String
     createdAt: String
-    days: [Day]!
-  }
-
-  type Day {
-    _id: ID
-    createdAt: String
-    activites: [Activity]
+    activities: [Activity]!
   }
 
   type Activity {
     _id: ID
+    createdAt: String
     category: String
     name: String
     link: String
@@ -46,8 +41,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addTrip(destinationName: String!): Trip
-    addDay(tripId: ID!): Trip
-    addActivity(dayId: ID!, category: String!, name: String!, link: String!): Day
+    addActivity(tripId: ID!, category: String!, name: String!, link: String!): Trip
   }
 `;
 

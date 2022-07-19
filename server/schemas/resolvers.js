@@ -13,9 +13,9 @@ const resolvers = {
     trips: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Trip.find(params).sort({ createdAt: -1 });
-    }, 
+    },
     trip: async (parent, { tripId }) => {
-      return Trip.findOne({ _id: tripId });
+      return Trip.findOne({ _id: tripId }).populate('activities');
     },
   },
 
@@ -54,6 +54,23 @@ const resolvers = {
         );
 
         return trip;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addActivity: async (parent, { tripId, category, name, link }, context) => {
+      if (context.user) {
+        return await Trip.findOneAndUpdate(
+          { _id: tripId },
+          {
+            $addToSet: {
+              activities: { category, name, link }
+            }
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
