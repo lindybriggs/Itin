@@ -24,36 +24,36 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_PROJECT = gql`
-  mutation addProject($projectTitle: String!) {
-  addProject(projectTitle: $projectTitle) {
+export const ADD_TRIP = gql`
+  mutation addTrip($destinationName: String!) {
+    addTrip(destinationName: $destinationName) {
     _id
-    projectTitle
+    destinationName
     createdAt
-    expenses {
+    activities {
       _id
-      expenseText
-      expenseCount
-      expensePrice
+      category
+      name
+      link
       createdAt
     }
   }
 }
 `;
 
-export const ADD_EXPENSE = gql`
-  mutation addExpense($projectId: ID!, $expenseText: String!, $expenseCount: Int!, $expensePrice: Int!) {
-    addExpense(projectId: $projectId, expenseText: $expenseText, expenseCount: $expenseCount, expensePrice: $expensePrice) {
+export const ADD_ACTIVITY = gql`
+  mutation addActivity($tripId: ID!, $category: String!, $name: String!, $link: String!) {
+  addActivity(tripId: $tripId, category: $category, name: $name, link: $link) {
+    _id
+    destinationName
+    createdAt
+    activities {
       _id
-      projectTitle
       createdAt
-      expenses {
-        _id
-        expenseText
-        expenseCount
-        expensePrice
-        createdAt
-      }
+      category
+      name
+      link
     }
   }
+}
 `;

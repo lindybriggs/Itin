@@ -6,43 +6,43 @@ export const QUERY_USER = gql`
     _id
     username
     email
-    projects {
+    trips {
       _id
-      projectTitle
+      destinationName
       createdAt
     }
   }
 }
 `;
 
-export const QUERY_PROJECTS = gql`
+export const QUERY_TRIPS = gql`
   query Query($username: String) {
-  projects(username: $username) {
+  trips(username: $username) {
     _id
-    projectTitle
+    destinationName
     createdAt
-    expenses {
+    activities {
       _id
-      expenseText
-      expenseCount
-      expensePrice
+      category
+      name
+      link
       createdAt
     }
   }
 }
 `;
 
-export const QUERY_SINGLE_PROJECT = gql`
- query Query($projectId: ID!) {
-  project(projectId: $projectId) {
+export const QUERY_SINGLE_TRIP = gql`
+ query Query($tripId: ID!) {
+  trip(tripId: $tripId) {
     _id
-    projectTitle
+    destinationName
     createdAt
-    expenses {
+    activities {
       _id
-      expenseText
-      expenseCount
-      expensePrice
+      category
+      name
+      link
       createdAt
     }
   }
@@ -55,9 +55,9 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      projects {
+      trips {
         _id
-        projectTitle
+        destinationName
         createdAt
       }
     }
