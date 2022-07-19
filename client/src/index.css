@@ -1,0 +1,5 @@
+/* navbar heading link color */
+.MuiTypography-h6 > a {
+  color: white;
+  text-decoration: none;
+}
