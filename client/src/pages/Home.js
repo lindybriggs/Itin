@@ -1,18 +1,27 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 
-const Home = () => {
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+
+export default function Home() {
   return (
-    <main>
-      <Typography align="center" variant="h6" my={5}>
-        Welcome to the Expense Tracker, where monitoring home-project budgets is
-        made easy.
-      </Typography>
-      <div align="center">
-        <iframe title="kevin" src="https://giphy.com/embed/SEWEmCymjv8XDbsb8I" style={{ maxWidth: "400vw", height: 'auto' }} frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
-      </div>
-    </main>
-  );
-};
+    <Card align="center" sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Welcome!
+          </Typography>
+          <Typography align="center" variant="body2" color="text.secondary">
+            Quit daydreaming, and take action on those dream vacations!
 
-export default Home;
+            Build, brainstorm, and plan your 'Bucket List Trips' NOW.
+
+            Collect ideas for restaurants, hotels, activites, sites to see, etc.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
